@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Trần Quốc Trung (Trungdapchai) — Personal Website</title>
+  <meta name="description" content="Website cá nhân giao diện đẹp của Trần Quốc Trung (Trungdapchai): giới thiệu, dự án, kỹ năng, liên hệ." />
+  <meta name="theme-color" content="#ff3344" />
+  <style>
+    :root{
+      --bg:#0b0d13;--surface:#0f1422;--text:#e7edf6;--muted:#a7b0c4;--primary:#ff3344;--accent:#ffd166;--ring:rgba(255,255,255,.08);
+      --radius:18px;--shadow:0 20px 40px rgba(0,0,0,.35);
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,"Apple Color Emoji","Segoe UI Emoji";color:var(--text);
+      background: radial-gradient(900px 600px at 90% -10%, rgba(255,51,68,.18), transparent 60%),
+                  radial-gradient(900px 600px at -10% 10%, rgba(255,209,102,.12), transparent 60%),
+                  linear-gradient(180deg,#090b12,#0b0d13 40%,#0b0d13);
+    }
+    a{color:#9cc4ff;text-decoration:none}
+    img{max-width:100%;display:block}
+    .wrap{max-width:1180px;margin:0 auto;padding:20px}
+
+    header{position:sticky;top:0;z-index:40;backdrop-filter:blur(10px);background:rgba(11,13,19,.55);border-bottom:1px solid var(--ring)}
+    .nav{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 8px}
+    .brand{display:flex;align-items:center;gap:10px;font-weight:800}
+    .logo{width:36px;height:36px;border-radius:12px;display:grid;place-items:center;background:linear-gradient(135deg,var(--primary),#a41224);box-shadow:var(--shadow);}
+    .brand span{letter-spacing:.3px}
+    .menu{display:flex;gap:18px;flex-wrap:wrap}
+    .menu a{color:var(--text);opacity:.9}
+    .menu a:hover{color:var(--accent)}
+
+    .hero{display:grid;grid-template-columns:1.2fr .8fr;gap:28px;align-items:center;padding:48px 0}
+    .eyebrow{display:inline-flex;align-items:center;gap:8px;padding:8px 12px;border-radius:999px;background:#121a2d;border:1px solid var(--ring);color:#bfd7ff}
+    h1{font-size:clamp(28px,6vw,56px);line-height:1.06;margin:12px 0}
+    .lead{font-size:clamp(14px,2.3vw,18px);color:var(--muted)}
+    .cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:20px}
+    .btn{padding:12px 18px;border:none;border-radius:14px;font-weight:700;cursor:pointer;transition:transform .05s ease, box-shadow .2s ease}
+    .btn:active{transform:translateY(1px)}
+    .btn-primary{background:linear-gradient(135deg,var(--primary),#b71327);color:white;box-shadow:var(--shadow)}
+    .btn-ghost{background:#121a2d;color:var(--text);border:1px solid var(--ring)}
+
+    .section{padding:42px 0}
+    .card{background:linear-gradient(180deg,rgba(255,255,255,.04),rgba(255,255,255,.02));border:1px solid var(--ring);border-radius:var(--radius);box-shadow:var(--shadow)}
+    .grid{display:grid;gap:18px}
+    .g2{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .g3{grid-template-columns:repeat(3,minmax(0,1fr))}
+
+    .about{padding:18px;display:grid;grid-template-columns:140px 1fr;gap:20px;align-items:center}
+    .avatar{width:140px;height:140px;border-radius:50%;border:3px solid rgba(255,255,255,.22);background:#0c1222 url('assets/avatar.svg') center/cover no-repeat}
+    .kpis{display:flex;gap:14px;flex-wrap:wrap;margin-top:10px}
+    .kpi{flex:1 1 160px;text-align:center;padding:12px;border-radius:14px;background:#0c1222;border:1px solid var(--ring)}
+    .kpi .big{font-size:22px;font-weight:800;color:var(--accent)}
+
+    .project{padding:16px;display:grid;gap:10px}
+    .project h3{margin:0}
+    .project p{margin:0;color:var(--muted)}
+
+    .timeline{position:relative;padding-left:20px}
+    .timeline::before{content:"";position:absolute;left:9px;top:0;bottom:0;width:2px;background:linear-gradient(var(--accent),var(--primary))}
+    .tl-item{position:relative;padding:12px 12px 12px 26px;margin-left:6px}
+    .tl-item::before{content:"";position:absolute;left:-1px;top:18px;width:10px;height:10px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 4px rgba(255,209,102,.15)}
+
+    .skills{padding:16px}
+    .skill{margin:12px 0}
+    .skill h4{margin:0 0 6px}
+    .bar{height:10px;background:#0c1222;border:1px solid var(--ring);border-radius:999px;overflow:hidden}
+    .bar span{display:block;height:100%;background:linear-gradient(90deg,var(--accent),var(--primary))}
+
+    .contact{padding:16px;display:grid;gap:14px}
+    label{font-weight:700}
+    input,textarea{width:100%;padding:12px 14px;color:var(--text);background:#0c1222;border:1px solid var(--ring);border-radius:12px;outline:none}
+    textarea{min-height:120px;resize:vertical}
+
+    footer{padding:28px 0 40px;text-align:center;color:var(--muted)}
+
+    .toTop{position:fixed;right:16px;bottom:16px;width:44px;height:44px;border-radius:12px;display:grid;place-items:center;background:#121a2d;color:var(--text);border:1px solid var(--ring);box-shadow:var(--shadow);opacity:0;pointer-events:none;transform:translateY(10px);transition:.25s ease}
+    .toTop.show{opacity:1;pointer-events:auto;transform:translateY(0)}
+
+    @media (max-width: 980px){.hero{grid-template-columns:1fr}.g3{grid-template-columns:repeat(2,minmax(0,1fr))}}
+    @media (max-width: 640px){.g2,.g3{grid-template-columns:1fr}.about{grid-template-columns:1fr;text-align:center}.avatar{margin:0 auto}}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap nav">
+      <div class="brand">
+        <div class="logo" aria-hidden="true">TQ</div>
+        <span>Trần Quốc Trung · <em>Trungdapchai</em></span>
+      </div>
+      <nav class="menu" aria-label="Điều hướng chính">
+        <a href="#about">Về tôi</a>
+        <a href="#projects">Dự án</a>
+        <a href="#timeline">Hành trình</a>
+        <a href="#skills">Kỹ năng</a>
+        <a href="#contact">Liên hệ</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="hero" id="home">
+      <div>
+        <div class="eyebrow">Xin chào · Hello</div>
+        <h1>Tôi là <span style="color:var(--accent)">Trần Quốc Trung</span> — còn gọi là <strong>Trungdapchai</strong>.</h1>
+        <p class="lead">Mình đang theo học Thạc sĩ Thú y, yêu công nghệ và xây dựng ứng dụng hữu ích cho giáo dục, thú cưng và cộng đồng.</p>
+        <div class="cta">
+          <a class="btn btn-primary" href="#contact">Liên hệ ngay</a>
+          <a class="btn btn-ghost" href="#projects">Xem dự án</a>
+          <a class="btn btn-ghost" href="#" id="downloadCV" download>Tải CV</a>
+        </div>
+      </div>
+      <div class="card" style="padding:18px;display:grid;gap:14px;align-content:start">
+        <div class="about">
+          <div class="avatar" aria-hidden="true"></div>
+          <div>
+            <h3 style="margin:0 0 6px">Giới thiệu nhanh</h3>
+            <p style="margin:0;color:var(--muted)">Sống tại Cần Thơ. Đam mê AI trong thú y, đọc sách, học tiếng Anh và du lịch.</p>
+            <div class="kpis">
+              <div class="kpi"><div class="big">4+</div><div>Ứng dụng đã làm</div></div>
+              <div class="kpi"><div class="big">6+</div><div>Năm kinh nghiệm</div></div>
+              <div class="kpi"><div class="big">2</div><div>Ngôn ngữ (VI/EN)</div></div>
+            </div>
+          </div>
+        </div>
+        <small style="color:var(--muted)">*</small><small style="color:var(--muted)">Bạn có thể thay ảnh đại diện bằng ảnh thật (xem README).</small>
+      </div>
+    </section>
+
+    <section class="section" id="about">
+      <h2>Về tôi</h2>
+      <div class="card" style="padding:18px">
+        <p>Tôi là <strong>Trần Quốc Trung</strong> (biệt danh <strong>Trungdapchai</strong>), hiện học cao học ngành Thú y và vận hành cửa hàng thuốc thú y/đồ cho thú cưng. Mình thích lập trình web/mobile, tối ưu trải nghiệm người dùng và xây dựng nền tảng nội dung tích cực.</p>
+        <p>Định hướng: <em>AI for Veterinary</em>, sản phẩm nhẹ, mượt, an toàn và hữu ích.</p>
+      </div>
+    </section>
+
+    <section class="section" id="projects">
+      <h2>Dự án nổi bật</h2>
+      <div class="grid g3">
+        <article class="card project">
+          <h3>MyDiaryApp</h3>
+          <p>Nhật ký song ngữ, lưu trữ lâu dài, bảo vệ PIN.</p>
+          <a href="#">Xem chi tiết →</a>
+        </article>
+        <article class="card project">
+          <h3>VinaSocial</h3>
+          <p>Mạng xã hội thu nhỏ với nội dung tích cực, ưu tiên giáo dục & khám phá.</p>
+          <a href="#">Xem chi tiết →</a>
+        </article>
+        <article class="card project">
+          <h3>PetWorld</h3>
+          <p>Sân chơi cho người yêu thú cưng: hồ sơ thú cưng, chia sẻ kinh nghiệm.</p>
+          <a href="#">Xem chi tiết →</a>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="timeline">
+      <h2>Hành trình</h2>
+      <div class="card" style="padding:18px">
+        <div class="timeline">
+          <div class="tl-item">
+            <strong>2025</strong> — Theo học Thạc sĩ Thú y, nghiên cứu ứng dụng AI cho thú y.
+          </div>
+          <div class="tl-item">
+            <strong>2023–2024</strong> — Xây dựng các ứng dụng cá nhân (nhật ký, mạng xã hội thu nhỏ, PetWorld).
+          </div>
+          <div class="tl-item">
+            <strong>Trước đó</strong> — Vận hành cửa hàng thuốc thú y & vật phẩm cho thú cưng tại Cần Thơ.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="skills">
+      <h2>Kỹ năng</h2>
+      <div class="card skills">
+        <div class="skill">
+          <h4>HTML/CSS <span style="float:right">90%</span></h4>
+          <div class="bar"><span style="width:90%"></span></div>
+        </div>
+        <div class="skill">
+          <h4>JavaScript <span style="float:right">80%</span></h4>
+          <div class="bar"><span style="width:80%"></span></div>
+        </div>
+        <div class="skill">
+          <h4>React / React Native <span style="float:right">75%</span></h4>
+          <div class="bar"><span style="width:75%"></span></div>
+        </div>
+        <div class="skill">
+          <h4>Veterinary Knowledge <span style="float:right">85%</span></h4>
+          <div class="bar"><span style="width:85%"></span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="contact">
+      <h2>Liên hệ</h2>
+      <form class="card contact" id="contactForm">
+        <div>
+          <label for="name">Họ tên</label>
+          <input id="name" name="name" placeholder="Nhập họ tên" required />
+        </div>
+        <div>
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" placeholder="you@example.com" required />
+        </div>
+        <div>
+          <label for="message">Lời nhắn</label>
+          <textarea id="message" name="message" placeholder="Xin chào Trungdapchai..." required></textarea>
+        </div>
+        <div style="display:flex;gap:10px;flex-wrap:wrap">
+          <button class="btn btn-primary" type="submit">Gửi</button>
+          <a class="btn btn-ghost" id="directEmail" href="mailto:you@example.com">Email trực tiếp</a>
+        </div>
+      </form>
+    </section>
+
+    <footer>
+      <div>© <span id="year"></span> Trần Quốc Trung (Trungdapchai). Made with ❤ in Việt Nam.</div>
+      <div style="margin-top:8px"><a href="#home">Lên đầu trang</a></div>
+    </footer>
+  </main>
+
+  <button class="toTop" id="toTop" aria-label="Lên đầu trang" title="Top">↑</button>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    const toTop = document.getElementById('toTop');
+    window.addEventListener('scroll',()=>{ if(window.scrollY>500){toTop.classList.add('show')} else {toTop.classList.remove('show')} });
+    toTop.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
+
+    // Contact form -> mailto
+    const mailTarget = 'you@example.com'; // TODO: đổi email thật của bạn
+    document.getElementById('directEmail').href = `mailto:${mailTarget}`;
+    document.getElementById('contactForm').addEventListener('submit',(e)=>{
+      e.preventDefault();
+      const name=document.getElementById('name').value.trim();
+      const email=document.getElementById('email').value.trim();
+      const msg=document.getElementById('message').value.trim();
+      const subject=encodeURIComponent(`[Website] Liên hệ từ ${name}`);
+      const body=encodeURIComponent(`Tên: ${name}\nEmail: ${email}\n\n${msg}`);
+      window.location.href=`mailto:${mailTarget}?subject=${subject}&body=${body}`;
+    });
+
+    // On-the-fly CV text file
+    document.getElementById('downloadCV')?.addEventListener('click',(e)=>{
+      e.preventDefault();
+      const text=`CV — Trần Quốc Trung (Trungdapchai)\n\nTóm tắt:\n- MSc Thú y (ĐH Cần Thơ)\n- Hướng: AI trong thú y, phát triển app\n\nKỹ năng:\n- HTML/CSS/JS, React/React Native\n- Nghiệp vụ thú y, chăm sóc thú cưng\n\nLiên hệ: ${mailTarget}`;
+      const blob=new Blob([text],{type:'text/plain'});
+      const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download='CV_Trungdapchai.txt';a.click();URL.revokeObjectURL(url);
+    });
+  </script>
+</body>
+</html>
